@@ -43,6 +43,7 @@ def alauda_get_instance_metrics(namespace, name, instance_uuid, start_time, end_
     print url
     r = requests.get(url, headers=service_inst.headers)
 
+    print r.text
     util.check_response(r)
     data = json.loads(r.text)
     return data
@@ -61,8 +62,8 @@ def gather_data(namespace, run_event):
             service_name = service_inst.name
             instance_list = alauda_instance_list(namespace, service_name)
             for instance in instance_list:
-                end_time = int(time.time())
-                start_time = str(end_time - 70) #gather data every 1 minute
+                end_time = int(time.time()) - 10
+                start_time = str(end_time - 80) #gather data every 1 minute
 		end_time = str(end_time)
                 data = alauda_get_instance_metrics(namespace, service_name, instance['uuid'], start_time, end_time, "1m")
 		g_cpu_usage.labels(service_name, instance['instance_name']).set(data['points'][0][1])
