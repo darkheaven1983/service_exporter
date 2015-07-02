@@ -13,4 +13,7 @@ EXPOSE 9104
 
 ADD exporter.py /exporter.py
 
+ENV ALAUDA_USERNAME=testuser
+ENV ALAUDA_PASSWORD=testpass
+
 CMD ["python", "-u", "/exporter.py"]
