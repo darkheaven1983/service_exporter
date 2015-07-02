@@ -72,6 +72,7 @@ if __name__ == "__main__":
 
     username = os.environ.get('ALAUDA_USERNAME')
     password = os.environ.get('ALAUDA_PASSWORD')
+    sys.stdout.write("username: %s, password: %s" % (username, password))
     alauda_login(username, password)
 
     run_event = threading.Event()

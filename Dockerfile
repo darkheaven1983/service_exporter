@@ -13,4 +13,4 @@ EXPOSE 9104
 
 ADD exporter.py /exporter.py
 
-CMD ["python", "/exporter.py"]
+CMD ["python", "-u", "/exporter.py"]
