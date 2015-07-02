@@ -12,6 +12,7 @@ import os
 
 from alaudacli import service
 from alaudacli import commands
+from alaudacli import util
 
 def alauda_login(username, password, cloud='cn', endpoint='https://api.alauda.cn/v1/'):
 
@@ -42,6 +43,7 @@ def alauda_get_instance_metrics(namespace, name, instance_uuid, start_time, end_
     print url
     r = requests.get(url, headers=service_inst.headers)
 
+    util.check_response(r)
     data = json.loads(r.text)
     return data
 
