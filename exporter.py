@@ -62,8 +62,8 @@ def gather_data(namespace, run_event):
             service_name = service_inst.name
             instance_list = alauda_instance_list(namespace, service_name)
             for instance in instance_list:
-                end_time = int(time.time())
-                start_time = str(end_time - 60) #gather data every 1 minute
+                end_time = int(time.time()) - 30
+                start_time = str(end_time - 100) #gather data every 1 minute, ensure we can get at least one metric
 		end_time = str(end_time)
                 data = alauda_get_instance_metrics(namespace, service_name, instance['uuid'], start_time, end_time, "1m")
                 if data:
