@@ -27,4 +27,4 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     target_groups:
-      - targets: ['10.236.14.20:80']
+      - targets: ['serviceexporter:80']

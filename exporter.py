@@ -8,6 +8,7 @@ import json
 import requests
 import time
 import sys
+import os
 
 from alaudacli import service
 from alaudacli import commands
@@ -69,7 +70,9 @@ def gather_data(namespace, run_event):
 
 if __name__ == "__main__":
 
-    alauda_login('darkheaven', 'alaudaletmein')
+    username = os.environ.get('ALAUDA_USERNAME')
+    password = os.environ.get('ALAUDA_PASSWORD')
+    alauda_login(username, password)
 
     run_event = threading.Event()
     run_event.set()
